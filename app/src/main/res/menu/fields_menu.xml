@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/select_cities"
+            android:title="Select cities" />
+        <item
+            android:id="@+id/saved_cities"
+            android:title="Saved cities" />
+        <item
+            android:id="@+id/weather"
+            android:title="Weather" />
+        <item
+            android:id="@+id/author"
+            android:title="About author" />
+    </group>
+</menu>
