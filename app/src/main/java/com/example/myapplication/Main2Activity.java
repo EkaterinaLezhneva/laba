@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.support.design.widget.NavigationView;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
@@ -8,10 +9,13 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-
+import android.widget.TextView;
 
 
 public class Main2Activity extends AppCompatActivity {
+
+    Intent myIntent;
+    TextView nameUser;
 
     Fragment fragment = new Weather();
     Fragment fragment1 = new City();
@@ -24,6 +28,13 @@ public class Main2Activity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity2_main);
+        myIntent = getIntent();
+        nameUser = findViewById(R.id.nameUser);
+
+        if(myIntent != null){
+            String name = myIntent.getStringExtra("nameUser");
+
+        }
 
         final android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
@@ -40,6 +51,8 @@ public class Main2Activity extends AppCompatActivity {
 
                 menuItem.setChecked(true);
                 mDrawerLayout.closeDrawers();
+                android.app.FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
 
                 int idItem = menuItem.getItemId();
                 if (idItem == R.id.select_cities) {
@@ -53,7 +66,7 @@ public class Main2Activity extends AppCompatActivity {
                     fragmentTransaction.replace(R.id.container, fragment3);
                 }
 
-                fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
 
                 return true;
